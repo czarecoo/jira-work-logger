@@ -41,13 +41,22 @@
         </dependency>
 
         <dependency>
-            <groupId>net.rcarz</groupId>
-            <artifactId>jira-client</artifactId>
-            <version>0.5</version>
-            <scope>compile</scope>
+            <groupId>com.atlassian.jira</groupId>
+            <artifactId>jira-rest-java-client-core</artifactId>
+            <version>5.2.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.atlassian.jira</groupId>
+            <artifactId>jira-rest-java-client-app</artifactId>
+            <version>5.2.2</version>
         </dependency>
     </dependencies>
-
+    <repositories>
+        <repository>
+            <id>atlassian-public</id>
+            <url>https://packages.atlassian.com/maven/repository/public</url>
+        </repository>
+    </repositories>
     <build>
         <plugins>
             <plugin>

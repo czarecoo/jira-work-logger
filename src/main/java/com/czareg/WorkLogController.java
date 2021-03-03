@@ -1,11 +1,12 @@
 package com.czareg;
 
-import net.rcarz.jiraclient.BasicCredentials;
-import net.rcarz.jiraclient.Issue;
-import net.rcarz.jiraclient.JiraClient;
-import net.rcarz.jiraclient.JiraException;
+import com.atlassian.jira.rest.client.api.JiraRestClient;
+import com.atlassian.jira.rest.client.api.domain.Issue;
+import com.atlassian.jira.rest.client.internal.async.AsynchronousJiraRestClientFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.net.URI;
 
 @RestController
 public class WorkLogController {
@@ -14,10 +15,10 @@ public class WorkLogController {
     private static final String JIRA_ADMIN_PASSWORD = "Wo9lwEbIlX3eHEr0zsR82839";
 
     @GetMapping
-    public void get() throws JiraException {
-        BasicCredentials creds = new BasicCredentials(JIRA_ADMIN_USERNAME, JIRA_ADMIN_PASSWORD);
-        JiraClient jira = new JiraClient(JIRA_URL, creds);
-        Issue issue = jira.getIssue("WL-1");
+    public void get() {
+        JiraRestClient jiraRestClient = new AsynchronousJiraRestClientFactory()
+                .createWithBasicHttpAuthentication(URI.create(JIRA_URL), JIRA_ADMIN_USERNAME, JIRA_ADMIN_PASSWORD);
+        Issue issue = jiraRestClient.getIssueClient().getIssue("WL-1").claim();
         System.out.println(issue.getDescription());
     }
 }

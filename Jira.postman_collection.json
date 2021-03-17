@@ -1,0 +1,39 @@
+{
+	"info": {
+		"_postman_id": "4f61f11f-9640-4c73-a755-453faa2f7f3d",
+		"name": "Jira",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "logEightHoursEveryWorkdayThisWeek",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"url\":\"https://czarecoo.atlassian.net/\",\r\n    \"email\":\"czarecoo@o2.pl\",\r\n    \"token\":\"Wo9lwEbIlX3eHEr0zsR82839\",\r\n    \"issueKey\":\"WL-4\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/logEightHoursEveryWorkdayThisWeek",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logEightHoursEveryWorkdayThisWeek"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
